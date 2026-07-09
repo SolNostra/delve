@@ -2,7 +2,7 @@ extends Control
 class_name TitleMenu
 
 func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/home/home.tscn")
+	get_tree().change_scene_to_file("res://scenes/mines/cave.tscn")
 
 func _on_options_button_pressed() -> void:
 	pass # go 2 options when made

@@ -1,29 +1,21 @@
 extends CharacterBody3D
 class_name Player
 
-var health_component : HealthComponent
-var stamina_component: StaminaComponent
-
-var movement_controller : MovementController
-var animation_controller : AnimationController
-var player_state : PlayerStateComponent
-
-var model : Node3D
-var collider : CollisionShape3D
+@onready var camera_controller: CameraController = %CameraController
+@onready var movement_controller: MovementController = %MovementController
+@onready var menu_input_component: MenuInputComponent = %MenuInputComponent
+@onready var health_component: HealthComponent = %HealthComponent
+@onready var stamina_component: StaminaComponent = %StaminaComponent
+@onready var dialogue_component: DialogueComponent = %DialogueComponent
+@onready var death_component: DeathComponent = %DeathComponent
+@onready var player_state_component: PlayerStateComponent = %PlayerStateComponent
+@onready var interaction_controller: InteractionController = %InteractionController
+@onready var collider: CollisionShape3D = $Collider
+@onready var model: Node3D = $Model
 
 func _ready() -> void:
-	register_player()
-	register_components()
-
-func register_player() -> void:
 	PlayerManager.player = self
+	death_component.player_died.connect(_on_player_died)
 
-func register_components() -> void:
-	health_component = $Components/HealthComponent
-	stamina_component = $Components/StaminaComponent
-	movement_controller = $Components/MovementController
-	animation_controller = $Components/AnimationController
-	player_state = $Components/PlayerStateComponent
-	collider = $Collider
-	model = $Model
-	
+func _on_player_died(death_type: String) -> void:
+		DeathManager.enter_death_screen(death_type)

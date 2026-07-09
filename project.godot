@@ -21,6 +21,7 @@ PhantomCameraManager="*uid://duq6jhf6unyis"
 PlayerManager="*uid://n875a11kc1gj"
 DialogueManager="*uid://c3rodes2l3gxb"
 State="*uid://bufuh1oefqdto"
+DeathManager="*uid://ctx4icfqxr653"
 
 [dialogue_manager]
 

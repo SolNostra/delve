@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://38i2356ohh57"]
+
+[ext_resource type="Theme" uid="uid://bq53pwtkpigch" path="res://ui/assets/themes/hudtheme.tres" id="1_as5vg"]
+[ext_resource type="Script" uid="uid://cpftltty0fw8a" path="res://menus/dead/dead_menu.gd" id="1_jp5x5"]
+[ext_resource type="Theme" uid="uid://cimdclgy4nxbi" path="res://ui/assets/themes/skewed_button.tres" id="2_jp5x5"]
+
+[node name="DeadMenu" type="Control" unique_id=2017336233]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_jp5x5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2113947047]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.16078432, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=375630316]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="DeathMessage" type="RichTextLabel" parent="MarginContainer" unique_id=104987967]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("1_as5vg")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[shake]try a little harder next time?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=612378747]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer" unique_id=935922758]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="YouDied" type="RichTextLabel" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=1830663951]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_as5vg")
+theme_override_font_sizes/normal_font_size = 74
+bbcode_enabled = true
+text = "[shake]you are dead."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=542130680]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_jp5x5")
+text = "try again?
+"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=758523927]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_jp5x5")
+text = "main menu"

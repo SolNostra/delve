@@ -16,30 +16,26 @@
 [ext_resource type="Script" uid="uid://b0hng3ikukj0i" path="res://entities/player/scripts/interaction_controller.gd" id="7_yqrof"]
 [ext_resource type="Script" uid="uid://bd8c8fp8oc1tt" path="res://entities/player/dialogue_component.gd" id="8_7thud"]
 [ext_resource type="Resource" uid="uid://bw355o07rxnkr" path="res://dialogue/testing.dialogue" id="9_a1qjk"]
-[ext_resource type="Script" uid="uid://fr7avfnn5mix" path="res://entities/player/scripts/death_component.gd" id="11_afbqv"]
+[ext_resource type="Script" uid="uid://fr7avfnn5mix" path="res://entities/player/scripts/death_component/death_component.gd" id="11_afbqv"]
 [ext_resource type="Script" uid="uid://c7j0miur5c51t" path="res://entities/player/scripts/player_state/player_state_component.gd" id="13_yqrof"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_we0b7"]
 animation = &"sitting_start"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mtric"]
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eyb6c"]
-advance_mode = 2
-advance_condition = &"sitting"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_221hk"]
 xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b2kln"]
 advance_mode = 2
-advance_condition = &"standing"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5axk5"]
-states/IdleMove/node = ExtResource("2_b2kln")
-states/IdleMove/position = Vector2(403, 100)
-states/Sitting/node = SubResource("AnimationNodeAnimation_we0b7")
-states/Sitting/position = Vector2(403, 189)
-transitions = ["Start", "IdleMove", SubResource("AnimationNodeStateMachineTransition_mtric"), "IdleMove", "Sitting", SubResource("AnimationNodeStateMachineTransition_eyb6c"), "Sitting", "IdleMove", SubResource("AnimationNodeStateMachineTransition_221hk")]
+states/moving/node = ExtResource("2_b2kln")
+states/moving/position = Vector2(557, 100)
+states/sitting/node = SubResource("AnimationNodeAnimation_we0b7")
+states/sitting/position = Vector2(557, 184)
+transitions = ["moving", "sitting", SubResource("AnimationNodeStateMachineTransition_eyb6c"), "sitting", "moving", SubResource("AnimationNodeStateMachineTransition_221hk"), "Start", "moving", SubResource("AnimationNodeStateMachineTransition_b2kln")]
 
 [sub_resource type="Animation" id="Animation_3wlsy"]
 resource_name = "ArmatureAction_002"
@@ -1693,7 +1689,7 @@ _data = {
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2c62f"]
 radius = 0.34277344
-height = 2.2778015
+height = 3.6876793
 
 [sub_resource type="Resource" id="Resource_dw050"]
 script = ExtResource("6_1jxqw")
@@ -1703,14 +1699,13 @@ collision_mask = 118
 script = ExtResource("1_i3pqv")
 
 [node name="Model" type="Node3D" parent="." unique_id=1745203283]
-transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, -1.1665373, 0)
+transform = Transform3D(-0.8, 0, -1.2079664e-07, 0, 0.8, 0, 1.2079664e-07, 0, -0.8, 0, -1.1665373, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="Model" unique_id=779163806]
 tree_root = SubResource("AnimationNodeStateMachine_5axk5")
+advance_expression_base_node = NodePath("../../Components/AnimationController")
 anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/sitting = false
-parameters/conditions/standing = false
-parameters/IdleMove/blend_position = 0.0
+parameters/moving/blend_position = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Model" unique_id=550052071]
 libraries/ = SubResource("AnimationLibrary_26q78")
@@ -1719,18 +1714,20 @@ autoplay = &"RESET"
 [node name="Armature" parent="Model" unique_id=818338391 instance=ExtResource("2_3wlsy")]
 
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=254235498]
-transform = Transform3D(0.99965185, 0, 0.026386317, 0, 1, 0, -0.026386317, 0, 0.99965185, 0, -0.022659302, 0)
+transform = Transform3D(0.99965185, 0, 0.026386317, 0, 1, 0, -0.026386317, 0, 0.99965185, 0, 0.6822796, 0)
 shape = SubResource("CapsuleShape3D_2c62f")
 script = ExtResource("3_j3ovn")
 
 [node name="Components" type="Node" parent="." unique_id=1816780717]
 
-[node name="AnimationController" type="Node" parent="Components" unique_id=1859672460 node_paths=PackedStringArray("animation_tree", "player_state")]
+[node name="AnimationController" type="Node" parent="Components" unique_id=1859672460 node_paths=PackedStringArray("player_state", "animation_tree")]
+unique_name_in_owner = true
 script = ExtResource("5_dw050")
-animation_tree = NodePath("../../Model/AnimationTree")
 player_state = NodePath("../PlayerStateComponent")
+animation_tree = NodePath("../../Model/AnimationTree")
 
 [node name="CameraController" type="Node" parent="Components" unique_id=1436820212 node_paths=PackedStringArray("camera", "camera_pivot", "model")]
+unique_name_in_owner = true
 script = ExtResource("4_1jxqw")
 camera = NodePath("../../CameraNodes/PhantomCamera3D")
 camera_pivot = NodePath("../../CameraNodes/CameraPivot")
@@ -1751,34 +1748,42 @@ process_mode = 3
 script = ExtResource("7_gx6sm")
 
 [node name="HealthComponent" type="Node" parent="Components" unique_id=1206439725]
+unique_name_in_owner = true
 script = ExtResource("6_bectd")
 
 [node name="StaminaComponent" type="Node" parent="Components" unique_id=1687896012]
+unique_name_in_owner = true
 script = ExtResource("7_wvtmh")
 
 [node name="DialogueComponent" type="Node" parent="Components" unique_id=1448955120]
+unique_name_in_owner = true
 script = ExtResource("8_7thud")
 dialogue_resource = ExtResource("9_a1qjk")
 
 [node name="DeathComponent" type="Node" parent="Components" unique_id=99643635 node_paths=PackedStringArray("health_component")]
+unique_name_in_owner = true
 script = ExtResource("11_afbqv")
 health_component = NodePath("../HealthComponent")
 
 [node name="PlayerStateComponent" type="Node" parent="Components" unique_id=1219187330]
+unique_name_in_owner = true
 script = ExtResource("13_yqrof")
 
 [node name="InteractionController" type="Node" parent="Components" unique_id=1480168796 node_paths=PackedStringArray("anim_controller")]
+unique_name_in_owner = true
 script = ExtResource("7_yqrof")
 anim_controller = NodePath("../AnimationController")
 
 [node name="CameraNodes" type="Node" parent="." unique_id=1233003959]
 
 [node name="CameraPivot" type="Node3D" parent="CameraNodes" unique_id=1691617193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3490503, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraNodes/CameraPivot" unique_id=1994980540]
 physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 0.8910065, 0.4539905, 0, -0.4539905, 0.8910065, 0, 2.4469714, 2.6730196)
+transform = Transform3D(1, 0, 0, 0, 0.8910065, 0.4539905, 0, -0.4539905, 0.8910065, 0, 3.8569713, 2.6730196)
 top_level = true
+fov = 90.0
 
 [node name="PhantomCameraHost" type="Node" parent="CameraNodes/CameraPivot/Camera3D" unique_id=1403196780]
 process_priority = 300
@@ -1787,20 +1792,24 @@ script = ExtResource("6_2hs0m")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraNodes" unique_id=1089252383 node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(1, 0, 0, 0, 0.8910065, 0.4539905, 0, -0.4539905, 0.8910065, 0, 2.4469714, 2.6730196)
+transform = Transform3D(1, 0, 0, 0, 0.8910065, 0.4539905, 0, -0.4539905, 0.8910065, 0, 3.8569713, 2.6730196)
 script = ExtResource("5_2hs0m")
 follow_mode = 6
 follow_target = NodePath("../..")
 tween_resource = SubResource("Resource_dw050")
-follow_offset = Vector3(0, 1.085, 0)
+follow_offset = Vector3(0, 2.495, 0)
+follow_damping = true
 follow_distance = 3.0
 vertical_rotation_offset = 0.47123889803846897
 spring_length = 3.0
+collision_mask = 3
 align_transform_with_view = Callable()
 align_position_with_view = Callable()
 align_rotation_with_view = Callable()
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1695768188]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6027436, 0)
-omni_range = 6.771349
+[node name="DevLight" type="OmniLight3D" parent="." unique_id=1695768188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4557211, 0)
+light_energy = 5.0
+light_size = 0.65
+omni_range = 38.622

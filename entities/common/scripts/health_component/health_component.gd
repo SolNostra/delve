@@ -11,8 +11,12 @@ func has_health_remaining() -> bool:
 func get_health_percentage() -> float:
 	return get_resource_percentage()
 
+## debug
+
 var godmode := false
 
 func toggle_godmode() -> bool:
 	godmode = !godmode
 	return godmode
+
+## debug end

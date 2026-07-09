@@ -3,8 +3,6 @@
 [ext_resource type="Theme" uid="uid://bq53pwtkpigch" path="res://ui/assets/themes/hudtheme.tres" id="1_dtu1n"]
 [ext_resource type="Script" uid="uid://06lyouv1yvf3" path="res://ui/scripts/player_stats_manager.gd" id="2_nuk0y"]
 [ext_resource type="PackedScene" uid="uid://biufdqtaoeln0" path="res://ui/scenes/debug_panel.tscn" id="3_fkcp4"]
-[ext_resource type="Script" uid="uid://bu0lke4exok4y" path="res://ui/scripts/debug_panel.gd" id="4_ysm04"]
-[ext_resource type="Script" uid="uid://cseycntu08pci" path="res://ui/scripts/draggable_panel.gd" id="5_xia82"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2c62f"]
 bg_color = Color(0.06879826, 0.06879829, 0.06879823, 1)
@@ -134,92 +132,3 @@ offset_top = -697.0
 offset_right = -204.0
 offset_bottom = -697.0
 size_flags_horizontal = 8
-
-[node name="DebugInfoPanel" type="Control" parent="." unique_id=2058712203]
-process_mode = 3
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1720.0
-offset_top = -706.0
-offset_right = -1720.0
-offset_bottom = -706.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 8
-script = ExtResource("4_ysm04")
-
-[node name="DraggablePanel" type="Panel" parent="DebugInfoPanel" unique_id=1189704452]
-custom_minimum_size = Vector2(50, 30)
-layout_mode = 0
-offset_left = 781.0
-offset_top = 183.0
-offset_right = 1139.0
-offset_bottom = 213.0
-mouse_default_cursor_shape = 6
-script = ExtResource("5_xia82")
-
-[node name="FoldableContainer" type="FoldableContainer" parent="DebugInfoPanel/DraggablePanel" unique_id=1392186916]
-unique_name_in_owner = true
-layout_mode = 0
-offset_top = 30.0
-offset_right = 358.0
-offset_bottom = 715.0
-focus_mode = 0
-mouse_default_cursor_shape = 2
-title = "Debug Information"
-
-[node name="MarginContainer" type="MarginContainer" parent="DebugInfoPanel/DraggablePanel/FoldableContainer" unique_id=267962595]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 25
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 25
-
-[node name="PanelContainer" type="PanelContainer" parent="DebugInfoPanel/DraggablePanel/FoldableContainer/MarginContainer" unique_id=1668102239]
-custom_minimum_size = Vector2(300, 600)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="DebugInfoPanel/DraggablePanel/FoldableContainer/MarginContainer/PanelContainer" unique_id=1803645717]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="ScrollContainer" type="ScrollContainer" parent="DebugInfoPanel/DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=1169086296]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="DebugInfoPanel/DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=1565604489]
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="DebugInfoPanel/DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=552301578]
-custom_minimum_size = Vector2(280, 100)
-layout_mode = 2
-
-[node name="PlayerStateTitle" type="RichTextLabel" parent="DebugInfoPanel/DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Panel" unique_id=1029618478]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Current Player State:"
-horizontal_alignment = 1
-
-[node name="PlayerStateLabel" type="RichTextLabel" parent="DebugInfoPanel/DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Panel" unique_id=1588513232]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Idle"
-horizontal_alignment = 1
-vertical_alignment = 1

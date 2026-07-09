@@ -9,7 +9,7 @@ class_name CameraController
 @export var tilt_limit := deg_to_rad(75)
 
 @export var min_zoom := 0.5
-@export var max_zoom := 3.0
+@export var max_zoom := 5.0
 @export var zoom_speed := 10.0
 @export var zoom_increment := 0.1
 

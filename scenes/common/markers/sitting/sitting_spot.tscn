@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4octlk7nw15v"]
 
-[ext_resource type="Script" uid="uid://gfbc4aisa3w4" path="res://scenes/mines/lift/bench/scripts/bench_interaction_area.gd" id="1_h8rhu"]
-[ext_resource type="Script" uid="uid://batspxhbmbiku" path="res://scenes/mines/lift/bench/scripts/on_interact.gd" id="2_m1d13"]
+[ext_resource type="Script" uid="uid://gfbc4aisa3w4" path="res://scenes/common/bench/scripts/bench_interaction_area.gd" id="1_h8rhu"]
+[ext_resource type="Script" uid="uid://batspxhbmbiku" path="res://scenes/common/bench/scripts/on_interact.gd" id="2_m1d13"]
 
 [node name="SittingSpot" type="Area3D" unique_id=1348153757]
 collision_layer = 32
