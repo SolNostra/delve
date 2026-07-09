@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://bq53pwtkpigch"]
+
+[ext_resource type="FontFile" uid="uid://is4fcxcpf8wm" path="res://ui/assets/fonts/Cascadia_Mono/CascadiaMono-VariableFont_wght.ttf" id="1_g641t"]
+
+[resource]
+default_font = ExtResource("1_g641t")

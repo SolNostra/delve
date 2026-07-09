@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bkhnjdvk4i7cx"]
+
+[ext_resource type="Texture2D" uid="uid://csgrmqudqa5e2" path="res://entities/common/assets/gradient_palette.png" id="1_yp21f"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_yp21f")

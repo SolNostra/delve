@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://biufdqtaoeln0"]
+
+[ext_resource type="Script" uid="uid://bu0lke4exok4y" path="res://ui/scripts/debug_panel.gd" id="1_sy621"]
+[ext_resource type="Script" uid="uid://cseycntu08pci" path="res://ui/scripts/draggable_panel.gd" id="2_4kdpg"]
+
+[node name="DebugPanel" type="Control" unique_id=355965833]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sy621")
+
+[node name="DraggablePanel" type="Panel" parent="." unique_id=1189704452]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 0
+offset_left = 781.0
+offset_top = 183.0
+offset_right = 1139.0
+offset_bottom = 213.0
+mouse_default_cursor_shape = 6
+script = ExtResource("2_4kdpg")
+
+[node name="FoldableContainer" type="FoldableContainer" parent="DraggablePanel" unique_id=1392186916]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 30.0
+offset_right = 358.0
+offset_bottom = 715.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+title = "Debug Menu"
+
+[node name="MarginContainer" type="MarginContainer" parent="DraggablePanel/FoldableContainer" unique_id=267962595]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="PanelContainer" type="PanelContainer" parent="DraggablePanel/FoldableContainer/MarginContainer" unique_id=1668102239]
+custom_minimum_size = Vector2(300, 600)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer" unique_id=1803645717]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=1169086296]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=1565604489]
+layout_mode = 2
+
+[node name="StatModificationPanel" type="PanelContainer" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=307594155]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/StatModificationPanel" unique_id=2039776201]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/StatModificationPanel/MarginContainer" unique_id=249677759]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/StatModificationPanel/MarginContainer/VBoxContainer" unique_id=843253630]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+bbcode_enabled = true
+text = "Modify Stat
+"
+
+[node name="StatSelection" type="OptionButton" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/StatModificationPanel/MarginContainer/VBoxContainer" unique_id=1420421858]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+selected = 0
+item_count = 2
+popup/item_0/text = "Health"
+popup/item_0/id = 0
+popup/item_1/text = "Stamina"
+popup/item_1/id = 1
+
+[node name="ModifyValue" type="LineEdit" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/StatModificationPanel/MarginContainer/VBoxContainer" unique_id=149453968]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Modify By..."
+caret_blink = true
+
+[node name="ModifyConfirmButton" type="Button" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/StatModificationPanel/MarginContainer/VBoxContainer" unique_id=2005244694]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Modify!"
+
+[node name="NoClipPanel" type="PanelContainer" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=767664398]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/NoClipPanel" unique_id=1712479484]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/NoClipPanel/MarginContainer" unique_id=830347184]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/NoClipPanel/MarginContainer/VBoxContainer" unique_id=570376347]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+bbcode_enabled = true
+text = "No-clip
+"
+
+[node name="NoclipStatusIndicator" type="ColorRect" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/NoClipPanel/MarginContainer/VBoxContainer" unique_id=258514854]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ToggleNoclipButton" type="Button" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/NoClipPanel/MarginContainer/VBoxContainer" unique_id=288058817]
+layout_mode = 2
+focus_mode = 0
+text = "Toggle"
+
+[node name="GodModePanel" type="PanelContainer" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1414720981]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GodModePanel" unique_id=1609836183]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GodModePanel/MarginContainer" unique_id=1626115797]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GodModePanel/MarginContainer/VBoxContainer" unique_id=1090079180]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+bbcode_enabled = true
+text = "God Mode
+"
+
+[node name="GodmodeStatusIndicator" type="ColorRect" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GodModePanel/MarginContainer/VBoxContainer" unique_id=2046581437]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(1, 0, 0, 1)
+
+[node name="ToggleGodmodeButton" type="Button" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GodModePanel/MarginContainer/VBoxContainer" unique_id=794751133]
+layout_mode = 2
+focus_mode = 0
+text = "Toggle"
+
+[connection signal="pressed" from="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/StatModificationPanel/MarginContainer/VBoxContainer/ModifyConfirmButton" to="." method="_on_modify_confirm_button_pressed"]
+[connection signal="pressed" from="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/NoClipPanel/MarginContainer/VBoxContainer/ToggleNoclipButton" to="." method="_on_toggle_noclip_button_pressed"]
+[connection signal="pressed" from="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GodModePanel/MarginContainer/VBoxContainer/ToggleGodmodeButton" to="." method="_on_toggle_godmode_button_pressed"]

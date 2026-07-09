@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://crmw8qypepj41"]
+
+[ext_resource type="Theme" uid="uid://bq53pwtkpigch" path="res://ui/assets/themes/hudtheme.tres" id="1_8vgpe"]
+[ext_resource type="Script" uid="uid://cr52dcboi7257" path="res://menus/pause/pause_menu.gd" id="1_n5dtg"]
+[ext_resource type="Theme" uid="uid://cimdclgy4nxbi" path="res://ui/assets/themes/skewed_button.tres" id="2_n5dtg"]
+
+[node name="PauseMenu" type="Control" unique_id=1171133850]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n5dtg")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1883872167]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=1819135071]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer" unique_id=262203460]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=1028276089]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_8vgpe")
+theme_override_font_sizes/normal_font_size = 74
+bbcode_enabled = true
+text = "[shake]paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=60410487]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_n5dtg")
+text = "resume
+"
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=834731559]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_n5dtg")
+text = "options"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=1751829029]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_n5dtg")
+text = "quit"
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
