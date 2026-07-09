@@ -6,7 +6,7 @@ class_name AnimationController
 
 var player : Player
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not player:
 		player = PlayerManager.player
 	
@@ -17,5 +17,5 @@ func update_walking_animation() -> void:
 		var blend_value := Vector2(player.velocity.x, player.velocity.z).length()
 		animation_tree.set("parameters/blend_position", blend_value)
 
-func set_sitting_animation(sitting: bool) -> void:
+func set_sitting_animation(_sitting: bool) -> void:
 	pass # remove later

@@ -268,6 +268,7 @@ gizmo_extents = 1.83
 
 [node name="Bench " type="MeshInstance3D" parent="bench" unique_id=1033243480]
 transform = Transform3D(1.008, 0, 0, 0, 0.72, 0, 0, 0, 0.72, 0, 0, 0)
+material_override = ExtResource("1_l2n36")
 mesh = SubResource("ArrayMesh_1x743")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="bench/Bench " unique_id=1008217446]
