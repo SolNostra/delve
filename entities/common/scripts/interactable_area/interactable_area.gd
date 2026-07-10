@@ -1,7 +1,7 @@
 extends Area3D
 class_name InteractableArea
 
-signal interacted(interaction_state: bool)
+signal interacted()
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -15,4 +15,6 @@ func _on_body_entered(body: Node3D) -> void:
 
 func _on_body_exited(body: Node3D) -> void:
 	PlayerManager.player.interaction_controller.interactable_area_exited(self)
-	
+
+func interact() -> void:
+	interacted.emit()

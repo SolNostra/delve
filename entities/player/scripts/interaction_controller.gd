@@ -12,7 +12,14 @@ func interactable_area_exited(area: InteractableArea) -> void:
 	interactables_nearby.erase(area)
 	deassign_hint_text(area)
 
-## Hint Text
+## Interacting
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact") \
+	and PlayerManager.player.player_state_component.current_state != PlayerStateComponent.PlayerState.BUSY:
+		for interactable in interactables_nearby:
+			interactable.interact()
+
+## Hint Text - This could be it's own file honestly.
 const HINT_NODE_NAME := "HINT_TEXT"
 const HINT_OFFSET := Vector3(0, 2, 0)
 

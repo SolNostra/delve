@@ -12,7 +12,7 @@ extends Node3D
 
 var drilling := false
 
-func _on_interactable_area_interacted(interaction_state: bool) -> void:
+func _on_interactable_area_interacted() -> void:
 	if drilling:
 		stop_drilling()
 	else:

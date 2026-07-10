@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bq53pwtkpigch" path="res://ui/assets/themes/hudtheme.tres" id="1_44n8g"]
 [ext_resource type="Script" uid="uid://b1yixdina67r7" path="res://menus/nightend/night_end_menu.gd" id="1_w3hsv"]
+[ext_resource type="AudioStream" uid="uid://ctrdf5q7jtavw" path="res://menus/nightend/assets/confetti.mp3" id="2_4st51"]
 [ext_resource type="Theme" uid="uid://cimdclgy4nxbi" path="res://ui/assets/themes/skewed_button.tres" id="2_w3hsv"]
 
 [node name="NightEndMenu" type="Control" unique_id=221632861]
@@ -12,6 +13,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w3hsv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1815885909]
+stream = ExtResource("2_4st51")
+autoplay = true
+bus = &"SFX"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1258860712]
 custom_minimum_size = Vector2(1920, 1080)
@@ -49,7 +55,7 @@ size_flags_horizontal = 4
 theme = ExtResource("1_44n8g")
 theme_override_font_sizes/normal_font_size = 124
 bbcode_enabled = true
-text = "[shake]another day at the mines..."
+text = "[shake]yuor did it"
 horizontal_alignment = 1
 vertical_alignment = 1
 

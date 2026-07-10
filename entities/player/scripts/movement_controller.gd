@@ -23,6 +23,7 @@ var noclip_enabled := false
 
 func _physics_process(delta: float) -> void:
 	if player_state.current_state == player_state.PlayerState.BUSY:
+		player.velocity = Vector3.ZERO
 		return
 	
 	if !noclip_enabled:

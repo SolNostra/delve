@@ -14,9 +14,13 @@ func _process(_delta: float) -> void:
 	update_walking_animation()
 
 func update_walking_animation() -> void:
+	var blend_value = 0.0
 	if player_state.current_state == PlayerStateComponent.PlayerState.IDLE:
-		var blend_value := Vector2(player.velocity.x, player.velocity.z).length()
-		animation_tree.set("parameters/moving/blend_position", blend_value)
+		blend_value = Vector2(player.velocity.x, player.velocity.z).length()
+	elif player_state.current_state == PlayerStateComponent.PlayerState.BUSY:
+		blend_value = 0.0
+	
+	animation_tree.set("parameters/moving/blend_position", blend_value)
 
 func set_animation(animation: String, teleport: bool = false) -> void:
 	state_machine.travel(animation, teleport)

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cekwwykix4h13"]
+
+[ext_resource type="Script" uid="uid://bbkotdpnbq1th" path="res://entities/common/dialogue_interactable/dialogue_interactable.gd" id="1_rgqyx"]
+[ext_resource type="Resource" uid="uid://bw355o07rxnkr" path="res://dialogue/testing.dialogue" id="2_qjfb8"]
+
+[node name="DialogueInteractable" type="Area3D" unique_id=863240960]
+script = ExtResource("1_rgqyx")
+dialogue_resource = ExtResource("2_qjfb8")
+metadata/_custom_type_script = "uid://bovtjjderyyp5"

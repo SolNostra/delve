@@ -1,11 +1,4 @@
 ~ start
-Dell: [[Hi|Hello|Howdy]] P15, this is some dialogue.
-Dell: Here are some choices.
-- First one
-	Dell: You picked the first one.
-- Second one
-	Dell: You picked the second one.
-- Start again => start
-- End the conversation => END
-Dell: Thanks, bye.
+P15: It's empty.
+P15: Like my soul.
 => END

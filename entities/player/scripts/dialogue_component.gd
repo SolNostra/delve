@@ -1,16 +1,14 @@
 extends Node
 class_name DialogueComponent
 
-const Balloon = preload("res://ui/assets/dialogue/balloon.tscn")
+func _ready() -> void:
+	DialogueManager.dialogue_started.connect(_on_dialogue_started)
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
-@export var dialogue_resource: DialogueResource
-@export var dialogue_start: String = "start"
-
-func _input(event: InputEvent) -> void:
-	pass
-	
-func test_dialogue() -> void:
+func _on_dialogue_started(_dialogue: DialogueResource) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	var balloon := Balloon.instantiate()
-	get_tree().current_scene.add_child(balloon)
-	balloon.start(dialogue_resource, dialogue_start)
+	PlayerManager.player.player_state_component.current_state = PlayerStateComponent.PlayerState.BUSY
+
+func _on_dialogue_ended(_dialogue: DialogueResource) -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	PlayerManager.player.player_state_component.current_state = PlayerStateComponent.PlayerState.IDLE
