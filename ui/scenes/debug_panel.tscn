@@ -85,11 +85,9 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 selected = 0
-item_count = 2
+item_count = 1
 popup/item_0/text = "Health"
 popup/item_0/id = 0
-popup/item_1/text = "Stamina"
-popup/item_1/id = 1
 
 [node name="ModifyValue" type="LineEdit" parent="DraggablePanel/FoldableContainer/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/StatModificationPanel/MarginContainer/VBoxContainer" unique_id=149453968]
 unique_name_in_owner = true

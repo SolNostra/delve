@@ -5,7 +5,6 @@ class_name Player
 @onready var movement_controller: MovementController = %MovementController
 @onready var menu_input_component: MenuInputComponent = %MenuInputComponent
 @onready var health_component: HealthComponent = %HealthComponent
-@onready var stamina_component: StaminaComponent = %StaminaComponent
 @onready var dialogue_component: DialogueComponent = %DialogueComponent
 @onready var death_component: DeathComponent = %DeathComponent
 @onready var player_state_component: PlayerStateComponent = %PlayerStateComponent

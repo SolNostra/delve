@@ -60,10 +60,9 @@ theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 text = "SAMPLE SPEAKER"
 
-[node name="PlayerStatsManager" type="Node" parent="." unique_id=1470323628 node_paths=PackedStringArray("health_label", "stamina_label")]
+[node name="PlayerStatsManager" type="Node" parent="." unique_id=1470323628 node_paths=PackedStringArray("health_label")]
 script = ExtResource("2_nuk0y")
 health_label = NodePath("../HUD/BottomBorder/MarginContainer/HealthLabel")
-stamina_label = NodePath("../HUD/BottomBorder/MarginContainer/StaminaLabel")
 
 [node name="DayStatsManager" type="Node" parent="." unique_id=389770685]
 
@@ -108,17 +107,6 @@ bbcode_enabled = true
 text = "HEALTH STATUS: HEALTHY"
 fit_content = true
 scroll_active = false
-vertical_alignment = 1
-
-[node name="StaminaLabel" type="RichTextLabel" parent="HUD/BottomBorder/MarginContainer" unique_id=976295998]
-layout_mode = 2
-theme = ExtResource("1_dtu1n")
-theme_override_font_sizes/normal_font_size = 48
-bbcode_enabled = true
-text = "STAMINA STATUS: FULL"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="DebugPanel" parent="." unique_id=355965833 instance=ExtResource("3_fkcp4")]

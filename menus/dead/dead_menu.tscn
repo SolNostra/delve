@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://bq53pwtkpigch" path="res://ui/assets/themes/hudtheme.tres" id="1_as5vg"]
 [ext_resource type="Script" uid="uid://cpftltty0fw8a" path="res://menus/dead/dead_menu.gd" id="1_jp5x5"]
 [ext_resource type="Theme" uid="uid://cimdclgy4nxbi" path="res://ui/assets/themes/skewed_button.tres" id="2_jp5x5"]
+[ext_resource type="AudioStream" uid="uid://cltde8khc3wfn" path="res://entities/common/assets/sfx/youdied.ogg" id="4_py4ac"]
 
 [node name="DeadMenu" type="Control" unique_id=2017336233]
 layout_mode = 3
@@ -13,6 +14,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_jp5x5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=570916033]
+stream = ExtResource("4_py4ac")
+autoplay = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2113947047]
 custom_minimum_size = Vector2(1920, 1080)
@@ -64,7 +69,7 @@ text = "[shake]you are dead."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ResumeButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=542130680]
+[node name="TryAgainButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=542130680]
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -80,3 +85,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_jp5x5")
 text = "main menu"
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

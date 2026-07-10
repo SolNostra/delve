@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://coslk8m7aooh" path="res://scenes/mines/lift/assets/chainlink.png" id="2_fiob3"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fiob3"]
-load_path = "res://.godot/imported/lift_Gradient Pallete.png-eea340c9ddbf0ee20417728a851ecf4a.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6srh4"]
 resource_name = "Palette"
@@ -225,7 +224,7 @@ cast_shadow = 0
 mesh = SubResource("ArrayMesh_76x57")
 
 [node name="Cable" type="MeshInstance3D" parent="." unique_id=1621402604]
-transform = Transform3D(1.4285713, 0, 0, 0, 1.4285716, 0, 1.4210855e-14, 0, 1.4285715, 0, 0, 0)
+transform = Transform3D(1.4285713, 0, 0, 0, 17.954426, 0, 2.842171e-14, 0, 1.4285715, 0, -81.813416, 0)
 material_override = ExtResource("1_l2n36")
 mesh = SubResource("ArrayMesh_qsr2j")
 
@@ -259,7 +258,7 @@ transform = Transform3D(-1.428534, -0.010297696, -0.00040688316, -0.010296313, 1
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door -col_001/Skeleton3D/BoneAttachment3D/StaticBody3D" unique_id=1041566445]
-transform = Transform3D(0.7083277, -1.294552e-09, -8.731149e-11, -5.6706995e-10, 0.7345275, 4.656613e-10, 0, 9.313226e-10, 1.0007511, 0.0013264753, -0.014022216, -4.2999783)
+transform = Transform3D(0.7083278, -9.313226e-10, -1.1641532e-10, -4.656613e-10, 0.7345276, 0, -1.1641532e-10, 7.450581e-09, 1.0007511, -0.00034467503, 0.21681905, -4.275011)
 shape = SubResource("ConcavePolygonShape3D_j1n6k")
 
 [node name="DoorOpenCollider" type="Area3D" parent="Door -col_001" unique_id=159066868 node_paths=PackedStringArray("anim_player")]

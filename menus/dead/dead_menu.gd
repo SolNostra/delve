@@ -42,3 +42,11 @@ func get_random_death_message(filter_type: String = "") -> String:
 
 func set_random_death_message(cause_of_death: String) -> void:
 	death_message.text = get_random_death_message(cause_of_death)
+
+## Buttons
+
+func _on_try_again_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://menus/title/title.tscn")
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://da44yhojbjkv0"]
+
+[ext_resource type="AudioStream" uid="uid://dgoimdlhlrmfp" path="res://menus/common/bgm/assets/snipersstruggle.ogg" id="1_4ivby"]
+[ext_resource type="Script" uid="uid://crvwoc1wojbn2" path="res://menus/common/bgm/autoload/bgm_manager.gd" id="2_at635"]
+
+[node name="BgmManager" type="AudioStreamPlayer" unique_id=193875505]
+process_mode = 3
+stream = ExtResource("1_4ivby")
+volume_db = -15.0
+mix_target = 1
+bus = &"Music"
+parameters/looping = true
+script = ExtResource("2_at635")

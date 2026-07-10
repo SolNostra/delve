@@ -15,5 +15,3 @@ func _ready() -> void:
 func _on_modify_confirm_button_pressed() -> void:
 	if stat_selection.selected == 0:
 		player.health_component.increase(modify_value.text.to_int())
-	elif stat_selection.selected == 1:
-		player.stamina_component.increase(modify_value.text.to_int())

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ntmvgech5k5f"]
+
+[ext_resource type="AudioStream" uid="uid://bji6tt8feslld" path="res://entities/common/assets/sfx/drilling.ogg" id="1_8ubxm"]
+[ext_resource type="Script" uid="uid://flcqq3uiw7lb" path="res://entities/common/audio_player/audio_player.gd" id="2_xkenh"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" unique_id=2043999297]
+stream = ExtResource("1_8ubxm")
+volume_db = -15.0
+bus = &"SFX"
+parameters/looping = true
+script = ExtResource("2_xkenh")

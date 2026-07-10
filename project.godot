@@ -13,15 +13,20 @@ config_version=5
 config/name="DELVE"
 run/main_scene="uid://ffyv0j2ruof3"
 config/features=PackedStringArray("4.7", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://ui/assets/icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://bs6e7t76nf5i6"
 
 [autoload]
 
 PhantomCameraManager="*uid://duq6jhf6unyis"
 PlayerManager="*uid://n875a11kc1gj"
 DialogueManager="*uid://c3rodes2l3gxb"
-State="*uid://bufuh1oefqdto"
 DeathManager="*uid://ctx4icfqxr653"
+BgmManager="*uid://da44yhojbjkv0"
 
 [dialogue_manager]
 

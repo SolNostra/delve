@@ -4,12 +4,14 @@ class_name PauseMenu
 var paused : bool
 signal pause_state_changed(state: bool)
 
+const OPTIONS_MENU = preload("uid://2gnht2qdfac3")
+
 func _on_resume_button_pressed() -> void:
 	toggle_pause()
 
 func _on_options_button_pressed() -> void:
-	toggle_pause()
-	# show options later
+	var options = OPTIONS_MENU.instantiate()
+	add_child(options)
 
 func _on_quit_button_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

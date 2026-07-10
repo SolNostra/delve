@@ -1,4 +1,11 @@
 [
 	{"text": "The mines claim another.", "type": "generic"},
+	{"text": "You have perished.", "type": "generic"},
+	{"text": "You have perished.", "type": "generic"},
+	{"text": "Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me.", "type": "generic"},
+	{"text": "01001001 00100000 01110010 01100101 01100001 01101100 01101100 01111001 00100000 01101100 01101001 01101011 01100101 00100000 01100001 01110000 01110000 01101100 01100101 01110011 00101110.", "type": "generic"},
+	{"text": "Death comes for us all, eventually.", "type": "generic"},
+	{"text": "It was going to happen anyways.", "type": "generic"},
+	
 	{"text": "Do not approach the drillhead during operation.", "type": "drill"},
 ]

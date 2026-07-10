@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://2gnht2qdfac3"]
+
+[ext_resource type="Script" uid="uid://btv41g5wh3mqb" path="res://menus/options/options_menu.gd" id="1_hk64l"]
+
+[node name="OptionsMenu" type="Control" unique_id=644078035]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hk64l")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=710735237]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 1905.0
+offset_bottom = 1065.0
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=2040423917]
+custom_minimum_size = Vector2(1200, 800)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="CloseMenuButton" type="Button" parent="CenterContainer/Panel" unique_id=1791833217]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 0
+offset_left = 1121.0
+offset_top = -77.0
+offset_right = 1191.0
+offset_bottom = -7.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "X"
+icon_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=990656498]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=2086414661]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="MasterVolumeSlider" type="VSlider" parent="CenterContainer/Panel/MarginContainer/HBoxContainer" unique_id=1163153324]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10.475, 500)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 5
+ticks_on_borders = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/Panel/MarginContainer/HBoxContainer/MasterVolumeSlider" unique_id=1398229888]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.0
+offset_top = -24.0
+offset_right = 30.0
+grow_horizontal = 2
+text = "MASTER"
+horizontal_alignment = 1
+
+[node name="SFXVolumeSlider" type="VSlider" parent="CenterContainer/Panel/MarginContainer/HBoxContainer" unique_id=415613905]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10.475, 500)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 5
+ticks_on_borders = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/Panel/MarginContainer/HBoxContainer/SFXVolumeSlider" unique_id=1501354467]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.0
+offset_top = -24.0
+offset_right = 30.0
+grow_horizontal = 2
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="MusicVolumeSlider" type="VSlider" parent="CenterContainer/Panel/MarginContainer/HBoxContainer" unique_id=279161821]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10.475, 500)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 5
+ticks_on_borders = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/Panel/MarginContainer/HBoxContainer/MusicVolumeSlider" unique_id=184671538]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.0
+offset_top = -24.0
+offset_right = 30.0
+grow_horizontal = 2
+text = "MUSIC"
+horizontal_alignment = 1
+
+[node name="DrillVolumeSlider" type="VSlider" parent="CenterContainer/Panel/MarginContainer/HBoxContainer" unique_id=1787278958]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10.475, 500)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 5
+ticks_on_borders = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/Panel/MarginContainer/HBoxContainer/DrillVolumeSlider" unique_id=1557603617]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.0
+offset_top = -24.0
+offset_right = 30.0
+grow_horizontal = 2
+text = "DRILL"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CenterContainer/Panel/CloseMenuButton" to="." method="_on_close_menu_button_pressed"]
+[connection signal="value_changed" from="CenterContainer/Panel/MarginContainer/HBoxContainer/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/Panel/MarginContainer/HBoxContainer/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/Panel/MarginContainer/HBoxContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/Panel/MarginContainer/HBoxContainer/DrillVolumeSlider" to="." method="_on_drill_volume_slider_value_changed"]

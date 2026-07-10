@@ -6,10 +6,10 @@ signal interacted(interaction_state: bool)
 var player_in_area := false ## Is the player currently in the objects interaction radius?
 var is_interacted := false ## Is the object currently being interacted with?
 
-func on_interactible_area_entered() -> void:
+func _on_body_entered(body: Node3D) -> void:
 	player_in_area = true
 
-func on_interactible_area_exited() -> void:
+func _on_body_exited(body: Node3D) -> void:
 	player_in_area = false
 
 func _input(event: InputEvent) -> void:

@@ -1,7 +1,10 @@
 [gd_scene format=4 uid="uid://cyvdtqvi6urk5"]
 
+[ext_resource type="Script" uid="uid://3akjfa61ng1s" path="res://scenes/mines/drill/drill.gd" id="1_hmvid"]
 [ext_resource type="Material" uid="uid://bkhnjdvk4i7cx" path="res://entities/common/assets/gradient_pallette_material.tres" id="1_pi8ia"]
 [ext_resource type="Script" uid="uid://d1wx876wx24m2" path="res://entities/common/colliders/hurtbox.gd" id="1_rcc7n"]
+[ext_resource type="PackedScene" uid="uid://ntmvgech5k5f" path="res://entities/common/audio_player/audio_player.tscn" id="2_gvsf4"]
+[ext_resource type="Script" uid="uid://bovtjjderyyp5" path="res://entities/common/scripts/interactable_area/interactable_area.gd" id="4_0hnqr"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hmvid"]
 height = 2.8728027
@@ -10,6 +13,57 @@ radius = 2.9960938
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g4v7s"]
 height = 7.3710294
 radius = 2.0698242
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0hnqr"]
+animation = &"drill_end"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2xxun"]
+animation = &"drill_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gvsf4"]
+animation = &"drill_loop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hshq1"]
+animation = &"drill_start"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2xxun"]
+xfade_time = 0.5
+advance_mode = 2
+advance_expression = "drilling == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xa7o8"]
+xfade_time = 0.5
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8mqdf"]
+xfade_time = 0.5
+advance_mode = 2
+advance_expression = "drilling == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_usx8x"]
+xfade_time = 0.5
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qki8i"]
+xfade_time = 0.5
+advance_mode = 2
+advance_expression = "drilling == true"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0hnqr"]
+states/End/position = Vector2(821, 141)
+states/Start/position = Vector2(236, 141)
+states/drill_end/node = SubResource("AnimationNodeAnimation_0hnqr")
+states/drill_end/position = Vector2(527, 46)
+states/drill_idle/node = SubResource("AnimationNodeAnimation_2xxun")
+states/drill_idle/position = Vector2(364, 46)
+states/drill_loop/node = SubResource("AnimationNodeAnimation_gvsf4")
+states/drill_loop/position = Vector2(527, 141)
+states/drill_start/node = SubResource("AnimationNodeAnimation_hshq1")
+states/drill_start/position = Vector2(364, 141)
+transitions = ["Start", "drill_start", SubResource("AnimationNodeStateMachineTransition_2xxun"), "drill_start", "drill_loop", SubResource("AnimationNodeStateMachineTransition_xa7o8"), "drill_loop", "drill_end", SubResource("AnimationNodeStateMachineTransition_8mqdf"), "drill_end", "drill_idle", SubResource("AnimationNodeStateMachineTransition_usx8x"), "drill_idle", "drill_start", SubResource("AnimationNodeStateMachineTransition_qki8i")]
+graph_offset = Vector2(-131, -31)
 
 [sub_resource type="Animation" id="Animation_b35h6"]
 resource_name = "ArmatureAction_002"
@@ -111,6 +165,9 @@ tracks/13/path = NodePath("Armature/Skeleton3D:LowerLeg.L.001")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = PackedFloat32Array(0, 1, -0.94275236, -0.21943605, 0.23903859, 0.07698365, 0.033333335, 1, -0.94262165, -0.21997884, 0.23899937, 0.07715639, 0.06666667, 1, -0.94230574, -0.22128512, 0.2389047, 0.07757168, 0.1, 1, -0.9418145, -0.22330159, 0.23875795, 0.07820952, 0.13333334, 1, -0.94115645, -0.22597273, 0.23856197, 0.07905105, 0.16666667, 1, -0.94034034, -0.22924107, 0.2383193, 0.080078624, 0.2, 1, -0.9393373, -0.23319268, 0.2380216, 0.081316896, 0.23333333, 1, -0.9382049, -0.23757136, 0.23768616, 0.08268489, 0.26666668, 1, -0.93695116, -0.2423225, 0.23731567, 0.084164634, 0.3, 1, -0.93558437, -0.24739276, 0.23691282, 0.085738644, 0.33333334, 1, -0.9341132, -0.25273025, 0.23648041, 0.08739002, 0.36666667, 1, -0.93253434, -0.25832945, 0.23601758, 0.08911427, 0.4, 1, -0.930882, -0.2640545, 0.235535, 0.090869546, 0.5, 1, -0.9255877, -0.28157088, 0.23400794, 0.0961537, 0.53333336, 1, -0.9237615, -0.28734773, 0.23348325, 0.09788623, 0.56666666, 1, -0.9219321, -0.2930102, 0.23295838, 0.09958236, 0.6, 1, -0.92011356, -0.29852313, 0.23243734, 0.10123186, 0.6333333, 1, -0.9183204, -0.30385196, 0.23192427, 0.10282473, 0.6666667, 1, -0.9165675, -0.30896294, 0.23142341, 0.10435112, 0.7, 1, -0.914907, -0.31372008, 0.2309494, 0.105770625, 0.73333335, 1, -0.9133315, -0.3181603, 0.23050024, 0.10709478, 0.76666665, 1, -0.91185796, -0.3222515, 0.23008062, 0.108314276, 0.8, 1, -0.91050345, -0.3259618, 0.22969529, 0.109419756, 0.8333333, 1, -0.9092849, -0.329259, 0.22934894, 0.11040177, 0.8666667, 1, -0.9082834, -0.3319417, 0.22906455, 0.11120053, 0.9, 1, -0.9074662, -0.33411273, 0.22883256, 0.11184681, 0.93333334, 1, -0.90685, -0.33573878, 0.22865777, 0.1123308, 0.96666664, 1, -0.9064515, -0.33678576, 0.22854482, 0.11264241, 1, 1, -0.90628624, -0.33721897, 0.22849794, 0.11277131)
+
+[sub_resource type="Animation" id="Animation_kq0d8"]
+resource_name = "drill_idle"
 
 [sub_resource type="Animation" id="Animation_pw4t8"]
 resource_name = "ArmatureAction_001"
@@ -216,6 +273,7 @@ tracks/13/keys = PackedFloat32Array(0, 1, -0.94615734, -0.20476887, 0.24006464, 
 
 [sub_resource type="Animation" id="Animation_dfste"]
 resource_name = "ArmatureAction"
+length = 0.001
 tracks/0/type = "rotation_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -318,6 +376,7 @@ tracks/13/keys = PackedFloat32Array(0, 1, -0.90628624, -0.33721897, 0.22849794, 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ohyhh"]
 _data = {
 &"drill_end": SubResource("Animation_b35h6"),
+&"drill_idle": SubResource("Animation_kq0d8"),
 &"drill_loop": SubResource("Animation_pw4t8"),
 &"drill_start": SubResource("Animation_dfste")
 }
@@ -431,7 +490,48 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="Curve" id="Curve_3gngh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_d0u6y"]
+curve = SubResource("Curve_3gngh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g4v7s"]
+lifetime_randomness = 0.6
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_max = 20.0
+scale_curve = SubResource("CurveTexture_d0u6y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qmd"]
+blend_mode = 1
+shading_mode = 0
+specular_mode = 1
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.8980392, 0.4509804, 0.023529412, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_yf5fn"]
+material = SubResource("StandardMaterial3D_57qmd")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(10, 5, 10)
+
 [node name="AzureDrill" type="Node3D" unique_id=1231543542]
+script = ExtResource("1_hmvid")
+
+[node name="AudioPlayer" parent="." unique_id=2043999297 instance=ExtResource("2_gvsf4")]
+volume_db = -80.0
+bus = &"Drill"
 
 [node name="Hurtbox" type="Area3D" parent="." unique_id=792626969]
 collision_layer = 20
@@ -448,9 +548,14 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.2481422, 0)
 shape = SubResource("CylinderShape3D_g4v7s")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=359692034]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1649581730]
+tree_root = SubResource("AnimationNodeStateMachine_0hnqr")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree" unique_id=359692034]
+root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_ohyhh")
-autoplay = &"drill_loop"
 
 [node name="Armature" type="Node3D" parent="." unique_id=1539614151]
 
@@ -487,78 +592,78 @@ bones/4/name = "Body"
 bones/4/parent = -1
 bones/4/rest = Transform3D(0, 0, -1, 0, -0.99999994, 0, -1, 0, 0, 0, 8.042307, 5.9604645e-08)
 bones/4/enabled = true
-bones/4/position = Vector3(0, 7.1954675, 5.9604645e-08)
-bones/4/rotation = Quaternion(0.7071068, 0, -0.7071068, 0)
+bones/4/position = Vector3(0, 8.042307, 5.9604645e-08)
+bones/4/rotation = Quaternion(0.70710677, 0, -0.70710677, 0)
 bones/4/scale = Vector3(1, 0.99999994, 1)
 bones/5/name = "UpperLeg.R"
 bones/5/parent = 4
 bones/5/rest = Transform3D(-1, -1.1891182e-07, 4.0192862e-07, -2.3577613e-07, -0.63323766, -0.77395725, 3.465491e-07, -0.77395725, 0.6332377, 4.2987267e-07, 3.8972383, -2.1448834)
 bones/5/enabled = true
 bones/5/position = Vector3(4.2987267e-07, 3.8972383, -2.1448834)
-bones/5/rotation = Quaternion(2.4939808e-07, -0.24997288, 0.96825296, -1.9019518e-08)
+bones/5/rotation = Quaternion(2.0706621e-07, -0.42823026, 0.90366966, -3.2330473e-08)
 bones/5/scale = Vector3(1, 0.9999999, 0.9999999)
 bones/6/name = "LowerLeg.R"
 bones/6/parent = 5
 bones/6/rest = Transform3D(1, -3.161573e-07, -1.0374018e-06, 4.4860025e-07, -0.75030726, 0.6610889, -9.873787e-07, -0.6610891, -0.75030696, -1.563194e-13, 2.9886787, 7.860379e-14)
 bones/6/enabled = true
 bones/6/position = Vector3(-1.563194e-13, 2.9886787, 7.860379e-14)
-bones/6/rotation = Quaternion(0.9614924, 5.9193766e-08, -5.428826e-07, -0.2748318)
+bones/6/rotation = Quaternion(0.93549645, 3.5393754e-08, -5.410979e-07, -0.353336)
 bones/6/scale = Vector3(1, 0.9999999, 0.9999995)
 bones/7/name = "Cap"
 bones/7/parent = 4
 bones/7/rest = Transform3D(-1.1920929e-07, 0, -0.99999994, 0, -1, 0, -0.99999994, 0, 1.7881393e-07, 0, 0, 0)
 bones/7/enabled = true
 bones/7/position = Vector3(0, 0, 0)
-bones/7/rotation = Quaternion(-0.7071068, 0, 0.7071068, 0)
+bones/7/rotation = Quaternion(-0.7071067, 0, 0.7071068, 0)
 bones/7/scale = Vector3(0.99999994, 1, 0.99999994)
 bones/8/name = "UpperLeg.L"
 bones/8/parent = 4
 bones/8/rest = Transform3D(1, -5.1250357e-08, 4.1935516e-07, 2.921094e-07, -0.6332376, -0.7739573, 3.052171e-07, 0.7739573, -0.6332376, 6.1738433e-07, 3.8972383, 2.1448834)
 bones/8/enabled = true
 bones/8/position = Vector3(6.1738433e-07, 3.8972383, 2.1448834)
-bones/8/rotation = Quaternion(0.96825296, 3.9043364e-08, 2.42312e-07, 0.24997267)
+bones/8/rotation = Quaternion(0.90366966, 6.6633596e-08, 2.0045276e-07, 0.4282303)
 bones/8/scale = Vector3(1, 0.9999999, 0.9999999)
 bones/9/name = "LowerLeg.L"
 bones/9/parent = 8
 bones/9/rest = Transform3D(1, 3.6427502e-07, 1.092014e-06, -4.486002e-07, -0.75030744, 0.661089, 1.0601644e-06, -0.661089, -0.75030744, 1.1335377e-13, 2.988679, -1.192092e-07)
 bones/9/enabled = true
 bones/9/position = Vector3(1.1335377e-13, 2.988679, -1.192092e-07)
-bones/9/rotation = Quaternion(0.96149236, -4.9191787e-08, 5.778743e-07, -0.27483162)
+bones/9/rotation = Quaternion(0.93549657, -2.2534875e-08, 5.7514336e-07, -0.35333592)
 bones/9/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/10/name = "UpperLeg.R.001"
 bones/10/parent = 4
 bones/10/rest = Transform3D(-0.5306237, -0.83200115, 0.16190222, 0.7330245, -0.54634714, -0.4051909, 0.4255741, -0.096325636, 0.8997822, -1.5938768, 3.8800092, 0.08124895)
 bones/10/enabled = true
 bones/10/position = Vector3(-1.5938768, 3.8800092, 0.08124895)
-bones/10/rotation = Quaternion(0.17503767, -0.12046214, 0.9111639, 0.35303116)
+bones/10/rotation = Quaternion(0.17025073, -0.14533958, 0.8626635, 0.4535447)
 bones/10/scale = Vector3(0.9999998, 0.9999999, 1)
 bones/11/name = "LowerLeg.R.001"
 bones/11/parent = 10
 bones/11/rest = Transform3D(0.61330664, 0.7262616, -0.31048158, 0.7857861, -0.60083556, 0.14675313, -0.0799672, -0.33397686, -0.93918294, -1.6391277e-07, 3.4639945, 2.682209e-07)
 bones/11/enabled = true
 bones/11/position = Vector3(-1.6391277e-07, 3.4639945, 2.682209e-07)
-bones/11/rotation = Quaternion(0.90442646, 0.39192677, -0.11243539, -0.12555626)
+bones/11/rotation = Quaternion(0.88788027, 0.42574662, -0.10993849, -0.13535893)
 bones/11/scale = Vector3(0.99999976, 0.99999994, 0.99999994)
 bones/12/name = "UpperLeg.L.001"
 bones/12/parent = 4
 bones/12/rest = Transform3D(0.57243824, 0.7739569, -0.27074805, 0.69964635, -0.6332377, -0.33091438, -0.4275613, 1.5943266e-07, -0.90398633, 2.5120835, 3.8800092, -0.43350852)
 bones/12/enabled = true
 bones/12/position = Vector3(2.5120835, 3.8800092, -0.43350852)
-bones/12/rotation = Quaternion(0.94975024, 0.2169093, -0.22499381, 0.017401367)
+bones/12/rotation = Quaternion(0.8817118, 0.4178247, -0.19799824, 0.09382729)
 bones/12/scale = Vector3(0.9999996, 0.99999964, 1)
 bones/13/name = "LowerLeg.L.001"
 bones/13/parent = 12
 bones/13/rest = Transform3D(0.7139156, 0.503295, -0.48684528, 0.596081, -0.80164105, 0.045373138, -0.36743906, -0.32259187, -0.8723089, 4.4703484e-07, 2.988678, 5.9604645e-08)
 bones/13/enabled = true
 bones/13/position = Vector3(4.4703484e-07, 2.988678, 5.9604645e-08)
-bones/13/rotation = Quaternion(0.9461573, 0.20476884, -0.2400646, -0.07228429)
+bones/13/rotation = Quaternion(0.9203078, 0.2986436, -0.23206486, -0.09995705)
 bones/13/scale = Vector3(0.99999976, 0.9999999, 0.99999994)
 bones/14/name = "DrillBit_2"
 bones/14/parent = 4
 bones/14/rest = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, 5.4910707, 0)
 bones/14/enabled = true
 bones/14/position = Vector3(0, 5.4910707, 0)
-bones/14/rotation = Quaternion(0, 8.742278e-08, 0, 1)
+bones/14/rotation = Quaternion(0, -1.7763568e-15, 0, 1)
 bones/14/scale = Vector3(1, 1, 1)
 
 [node name="Drill" type="MeshInstance3D" parent="Armature/Skeleton3D" unique_id=1717356496]
@@ -579,4 +684,25 @@ mesh = SubResource("ArrayMesh_0hnqr")
 skin = SubResource("Skin_rcc7n")
 skeleton = NodePath("..")
 
+[node name="SparksEmitter" type="GPUParticles3D" parent="." unique_id=1908109829]
+emitting = false
+amount = 20
+lifetime = 0.3
+explosiveness = 0.76
+randomness = 0.64
+process_material = SubResource("ParticleProcessMaterial_g4v7s")
+draw_pass_1 = SubResource("QuadMesh_yf5fn")
+
+[node name="InteractableArea" type="Area3D" parent="." unique_id=1091770443]
+collision_layer = 32
+script = ExtResource("4_0hnqr")
+metadata/_custom_type_script = "uid://bovtjjderyyp5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea" unique_id=573176527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, -0.5)
+shape = SubResource("BoxShape3D_g4v7s")
+
 [connection signal="body_entered" from="Hurtbox" to="Hurtbox" method="_on_body_entered"]
+[connection signal="body_entered" from="InteractableArea" to="InteractableArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractableArea" to="InteractableArea" method="_on_body_exited"]
+[connection signal="interacted" from="InteractableArea" to="." method="_on_interactable_area_interacted"]

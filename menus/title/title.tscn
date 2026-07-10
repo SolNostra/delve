@@ -19,8 +19,10 @@ script = ExtResource("1_fhm75")
 [node name="ColorRect" type="ColorRect" parent="." unique_id=476791596]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = -281.39542
+offset_top = -240.29117
+offset_right = 2350.2466
+offset_bottom = 1263.4205
 color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=845756229]
@@ -41,7 +43,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 bbcode_enabled = true
-text = "ALPHA V1.0.0"
+text = "ALPHA V1.1.3"
 horizontal_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=598862992]
@@ -53,11 +55,11 @@ theme_override_constants/separation = 15
 alignment = 1
 
 [node name="Title" type="RichTextLabel" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=85221173]
-custom_minimum_size = Vector2(1000, 100)
+custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_662h8")
-theme_override_font_sizes/normal_font_size = 74
+theme_override_font_sizes/normal_font_size = 124
 bbcode_enabled = true
 text = "[shake]delve"
 horizontal_alignment = 1
