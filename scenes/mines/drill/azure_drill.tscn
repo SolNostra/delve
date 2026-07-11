@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://bkhnjdvk4i7cx" path="res://entities/common/assets/gradient_pallette_material.tres" id="1_pi8ia"]
 [ext_resource type="Script" uid="uid://d1wx876wx24m2" path="res://entities/common/colliders/hurtbox.gd" id="1_rcc7n"]
 [ext_resource type="PackedScene" uid="uid://ntmvgech5k5f" path="res://entities/common/audio_player/audio_player.tscn" id="2_gvsf4"]
+[ext_resource type="AudioStream" uid="uid://bjs6kgfqhhuxs" path="res://entities/common/assets/sfx/beep.ogg" id="3_hshq1"]
 [ext_resource type="Script" uid="uid://bovtjjderyyp5" path="res://entities/common/scripts/interactable_area/interactable_area.gd" id="4_0hnqr"]
 
 [sub_resource type="Curve" id="Curve_3gngh"]
@@ -535,9 +536,16 @@ progress_per_tick = 5
 
 [node name="ProgressTimer" type="Timer" parent="." unique_id=1116114852]
 
-[node name="AudioPlayer" parent="." unique_id=2043999297 instance=ExtResource("2_gvsf4")]
+[node name="DrillingSFX" parent="." unique_id=2043999297 instance=ExtResource("2_gvsf4")]
 volume_db = -80.0
 bus = &"Drill"
+
+[node name="BeepSFX" parent="." unique_id=953703754 instance=ExtResource("2_gvsf4")]
+stream = ExtResource("3_hshq1")
+volume_db = -25.0
+pitch_scale = 0.4
+bus = &"Drill"
+parameters/looping = false
 
 [node name="ParticlesEmitter" type="GPUParticles3D" parent="." unique_id=1908109829]
 emitting = false

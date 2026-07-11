@@ -5,6 +5,9 @@ extends CanvasLayer
 ## The dialogue resource
 @export var dialogue_resource: DialogueResource
 
+## The voice SFX used for the dialogue.
+@export var dialogue_voice: DialogueVoice
+
 ## Start from a given title when using balloon as a [Node] in a scene.
 @export var start_from_title: String = ""
 
@@ -15,7 +18,7 @@ extends CanvasLayer
 @export var will_block_other_input: bool = true
 
 ## The action to use for advancing the dialogue
-@export var next_action: StringName = &"ui_accept"
+@export var next_action: StringName = &"interact"
 
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
@@ -110,11 +113,14 @@ func _notification(what: int) -> void:
 
 
 ## Start some dialogue
-func start(with_dialogue_resource: DialogueResource = null, title: String = "", extra_game_states: Array = []) -> void:
+func start(with_dialogue_resource: DialogueResource = null, with_voice: DialogueVoice = null, title: String = "", extra_game_states: Array = []) -> void:
 	temporary_game_states = [self] + extra_game_states
 	is_waiting_for_input = false
 	if is_instance_valid(with_dialogue_resource):
 		dialogue_resource = with_dialogue_resource
+	if is_instance_valid(with_voice):
+		dialogue_voice = with_voice
+	
 	if not title.is_empty():
 		start_from_title = title
 	dialogue_line = await dialogue_resource.get_next_dialogue_line(start_from_title, temporary_game_states)
@@ -145,16 +151,10 @@ func apply_dialogue_line() -> void:
 
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():
-		dialogue_label.type_out()
+		dialogue_label.type_out(dialogue_voice)
 		await dialogue_label.finished_typing
 
-	# Wait for next line
-	if dialogue_line.has_tag("voice"):
-		audio_stream_player.stream = load(dialogue_line.get_tag_value("voice"))
-		audio_stream_player.play()
-		await audio_stream_player.finished
-		next(dialogue_line.next_id)
-	elif dialogue_line.responses.size() > 0:
+	if dialogue_line.responses.size() > 0:
 		balloon.focus_mode = Control.FOCUS_NONE
 		responses_menu.show()
 	elif dialogue_line.time != "":

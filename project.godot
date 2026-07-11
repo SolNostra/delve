@@ -28,10 +28,23 @@ DialogueManager="*uid://c3rodes2l3gxb"
 DeathManager="*uid://ctx4icfqxr653"
 BgmManager="*uid://da44yhojbjkv0"
 NightManager="*uid://1epoo3swt5is"
+ObjectiveManager="*uid://tx5m4uab8vt6"
+AzureManager="*uid://bsob04lftjkrn"
 
 [dialogue_manager]
 
 runtime/balloon_path="res://ui/assets/dialogue/balloon.tscn"
+editor/new_file_template="~ start
+Juniper: [[Hi|Hello]], this is some dialogue.
+Juniper: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Juniper: You picked the second one.
+- Start again => start
+- End the conversation => END
+Juniper: For more information see the online documentation.
+=> END"
 
 [display]
 
@@ -117,7 +130,7 @@ drag_window={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/testing.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/default.dialogue")
 
 [layer_names]
 

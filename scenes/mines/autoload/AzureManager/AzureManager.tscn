@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bsob04lftjkrn"]
+
+[ext_resource type="Script" uid="uid://tylcic6ft0ly" path="res://scenes/mines/autoload/AzureManager/azure_manager.gd" id="1_n08j8"]
+
+[node name="AzureManager" type="Node" unique_id=955632478]
+script = ExtResource("1_n08j8")

@@ -25,7 +25,6 @@ const DialogueLine = preload("./dialogue_line.gd")
 ## raw version of the text
 @export var raw_text: String
 
-
 ## Get the next printable line of dialogue, starting from a referenced line ([code]title[/code] can
 ## be a title string or a stringified line number). Runs any mutations along the way and then returns
 ## the first dialogue line encountered.

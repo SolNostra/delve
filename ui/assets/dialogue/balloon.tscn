@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
 [ext_resource type="Theme" uid="uid://cimdclgy4nxbi" path="res://ui/assets/themes/skewed_button.tres" id="5_wnp1r"]
+[ext_resource type="AudioStream" uid="uid://cakgklck6lu84" path="res://ui/assets/sfx/voice.wav" id="6_1f1qf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -104,9 +105,14 @@ _data = {
 &"progress": SubResource("Animation_qkmqt")
 }
 
-[node name="ExampleBalloon" type="CanvasLayer" unique_id=1434168376]
+[node name="Balloon" type="CanvasLayer" unique_id=1434168376]
 layer = 100
 script = ExtResource("1_36de5")
+start_from_title = null
+auto_start = null
+will_block_other_input = null
+next_action = null
+skip_action = null
 
 [node name="Balloon" type="Control" parent="." unique_id=359403728]
 unique_name_in_owner = true
@@ -169,6 +175,8 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
+base_pitch = null
+pitch_variance = null
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1162966119]
 custom_minimum_size = Vector2(20, 10)
@@ -210,6 +218,7 @@ text = "Response example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1116280512]
 unique_name_in_owner = true
+stream = ExtResource("6_1f1qf")
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

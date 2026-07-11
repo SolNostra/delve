@@ -5,6 +5,7 @@
 ## A RichTextLabel specifically for use with [b]Dialogue Manager[/b] dialogue.
 class_name DialogueLabel extends RichTextLabel
 
+@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
 ## Emitted for each letter typed out.
 signal spoke(letter: String, letter_index: int, speed: float)
@@ -93,9 +94,12 @@ func _process(delta: float) -> void:
 func _update_text() -> void:
 	text = dialogue_line.text
 
+@export var typing_sfx : AudioStream
+@export var base_pitch : float = 1.0
+@export var pitch_variance : float = 0.3
 
 ## Start typing out the text
-func type_out() -> void:
+func type_out(voice: DialogueVoice) -> void:
 	_update_text()
 	visible_characters = 0
 	visible_ratio = 0
@@ -103,6 +107,10 @@ func type_out() -> void:
 	_last_wait_index = -1
 	_last_mutation_index = -1
 	_already_mutated_indices.clear()
+	
+	if voice:
+		typing_sfx = voice.typing_sfx
+		pitch_variance = voice.pitch_variance
 
 	is_typing = true
 	started_typing.emit()
@@ -125,7 +133,6 @@ func skip_typing() -> void:
 	is_typing = false
 	skipped_typing.emit()
 
-
 # Type out the next character(s)
 func _type_next(delta: float, seconds_needed: float) -> void:
 	if _is_awaiting_mutation: return
@@ -144,6 +151,7 @@ func _type_next(delta: float, seconds_needed: float) -> void:
 		_last_wait_index = visible_characters
 		_waiting_seconds += waiting_seconds
 	else:
+		_play_type_sfx()
 		visible_characters += 1
 		if visible_characters <= get_total_character_count():
 			spoke.emit(get_parsed_text()[visible_characters - 1], visible_characters - 1, _get_speed(visible_characters))
@@ -154,6 +162,14 @@ func _type_next(delta: float, seconds_needed: float) -> void:
 		else:
 			_type_next(delta, seconds_needed)
 
+
+func _play_type_sfx() -> void:
+	if typing_sfx:
+		audio_stream_player.stream = typing_sfx
+	
+	var rand_pitch = randf_range(-pitch_variance, pitch_variance)
+	audio_stream_player.pitch_scale = base_pitch + rand_pitch
+	audio_stream_player.play()
 
 # Get the speed for the current typing position
 func _get_speed(at_index: int) -> float:

@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://d2o226fwobxml" path="res://scenes/mines/cave_mesh.tscn" id="5_3cxkm"]
 [ext_resource type="PackedScene" uid="uid://cyvdtqvi6urk5" path="res://scenes/mines/drill/azure_drill.tscn" id="6_545h0"]
 [ext_resource type="Script" uid="uid://bbkotdpnbq1th" path="res://entities/common/dialogue_interactable/dialogue_interactable.gd" id="6_vefwu"]
-[ext_resource type="Resource" uid="uid://bw355o07rxnkr" path="res://dialogue/testing.dialogue" id="7_e4ixj"]
+[ext_resource type="Resource" uid="uid://b3hvxooun010j" path="res://dialogue/default.dialogue" id="7_e4ixj"]
+[ext_resource type="Script" uid="uid://bgk5k1p7ivqja" path="res://scenes/mines/start_night_on_ready.gd" id="8_bwt23"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uqaih"]
 
@@ -236,15 +237,17 @@ transform = Transform3D(48.803402, 0, 0, 0, 48.803402, 0, 0, 0, 48.803402, 0, 75
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.051834, 26.728054, -17.308098)
 
 [node name="DialogueInteractable" type="Area3D" parent="." unique_id=119718261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.443626, -21.609358, 76.31529)
 collision_layer = 32
 script = ExtResource("6_vefwu")
 dialogue_resource = ExtResource("7_e4ixj")
 metadata/_custom_type_script = "uid://bbkotdpnbq1th"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DialogueInteractable" unique_id=346707257]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.87486, -23.295774, 75.43002)
 shape = SubResource("SphereShape3D_g4v7s")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="DialogueInteractable" unique_id=992143184]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.87486, -20.295774, 75.43002)
 mesh = SubResource("SphereMesh_g4v7s")
+
+[node name="StartNightOnReady" type="Node" parent="." unique_id=966933567]
+script = ExtResource("8_bwt23")

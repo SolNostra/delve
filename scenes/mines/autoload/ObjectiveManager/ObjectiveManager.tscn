@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://tx5m4uab8vt6"]
+
+[ext_resource type="Script" uid="uid://bsm54log08qri" path="res://scenes/mines/autoload/ObjectiveManager/objective_manager.gd" id="1_rqjif"]
+
+[node name="ObjectiveManager" type="Node" unique_id=1912990249]
+script = ExtResource("1_rqjif")

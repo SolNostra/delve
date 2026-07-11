@@ -3,8 +3,9 @@
 [ext_resource type="Theme" uid="uid://bq53pwtkpigch" path="res://ui/assets/themes/hudtheme.tres" id="1_dtu1n"]
 [ext_resource type="Script" uid="uid://ntmfttjps8w3" path="res://ui/scripts/user_interface.gd" id="1_ysm04"]
 [ext_resource type="Script" uid="uid://06lyouv1yvf3" path="res://ui/scripts/player_stats_manager.gd" id="2_nuk0y"]
-[ext_resource type="Script" uid="uid://d0vl876gqbljh" path="res://ui/scripts/night_progress_bar_manager.gd" id="3_3img2"]
 [ext_resource type="PackedScene" uid="uid://biufdqtaoeln0" path="res://ui/scenes/debug_panel.tscn" id="3_fkcp4"]
+[ext_resource type="Script" uid="uid://trs2g5rv2isy" path="res://ui/scripts/azure_progress.gd" id="5_me43p"]
+[ext_resource type="Script" uid="uid://c28xjppc20w3" path="res://ui/scripts/objectives_panel.gd" id="5_xia82"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2c62f"]
 bg_color = Color(0.06879826, 0.06879829, 0.06879823, 1)
@@ -75,10 +76,6 @@ text = "SAMPLE SPEAKER"
 script = ExtResource("2_nuk0y")
 health_label = NodePath("../HUD/BottomBorder/MarginContainer/HealthLabel")
 
-[node name="NightProgressBarManager" type="Node" parent="." unique_id=389770685]
-unique_name_in_owner = true
-script = ExtResource("3_3img2")
-
 [node name="HUD" type="Control" parent="." unique_id=19996334]
 layout_mode = 3
 anchors_preset = 15
@@ -146,7 +143,7 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/TopBorder/MarginContainer" unique_id=781688102]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HUD/TopBorder/MarginContainer/VBoxContainer" unique_id=477418990]
+[node name="AzureExtractedLabel" type="RichTextLabel" parent="HUD/TopBorder/MarginContainer/VBoxContainer" unique_id=477418990]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_vertical = 4
@@ -154,7 +151,7 @@ bbcode_enabled = true
 text = "AZURE EXTRACTED:"
 horizontal_alignment = 1
 
-[node name="NightProgress" type="ProgressBar" parent="HUD/TopBorder/MarginContainer/VBoxContainer" unique_id=572599362]
+[node name="AzureProgress" type="ProgressBar" parent="HUD/TopBorder/MarginContainer/VBoxContainer" unique_id=572599362]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
@@ -162,6 +159,65 @@ size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_yf5fn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_g4v7s")
 show_percentage = false
+script = ExtResource("5_me43p")
+
+[node name="FullLabel" type="RichTextLabel" parent="HUD/TopBorder/MarginContainer/VBoxContainer/AzureProgress" unique_id=673090879]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "FULL - RETURN TO SURFACE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD" unique_id=893879471]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 120
+
+[node name="ObjectivesPanel" type="Panel" parent="HUD/MarginContainer" unique_id=2071032071]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("5_xia82")
+
+[node name="ObjectivesTitle" type="RichTextLabel" parent="HUD/MarginContainer/ObjectivesPanel" unique_id=646106903]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "OBJECTIVES"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer/ObjectivesPanel" unique_id=1484068955]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ObjectivesContainer" type="VBoxContainer" parent="HUD/MarginContainer/ObjectivesPanel/MarginContainer" unique_id=1399398398]
+layout_mode = 2
+theme_override_constants/separation = 4
 
 [node name="DebugPanel" parent="." unique_id=355965833 instance=ExtResource("3_fkcp4")]
 anchors_preset = 8

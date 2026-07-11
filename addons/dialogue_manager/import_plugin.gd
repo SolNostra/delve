@@ -57,8 +57,8 @@ func _get_import_options(path: String, preset_index: int) -> Array:
 	}]
 
 
-func _get_option_visibility(path: String, option_name: StringName, options: Dictionary) -> bool:
-	return false
+#func _get_option_visibility(path: String, option_name: StringName, options: Dictionary) -> bool:
+#	return false
 
 
 func _import(source_file: String, save_path: String, options: Dictionary, platform_variants: Array[String], gen_files: Array[String]) -> Error:

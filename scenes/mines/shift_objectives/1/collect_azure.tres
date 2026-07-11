@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Objective" format=3 uid="uid://bi7407e21y8uc"]
+
+[ext_resource type="Script" uid="uid://ctdbfmpawuh6i" path="res://scenes/mines/shift_objectives/objective.gd" id="1_a6wba"]
+[ext_resource type="Script" uid="uid://cy126x2quk61t" path="res://scenes/mines/shift_objectives/conditions/collect_azure_condition.gd" id="1_c05vc"]
+
+[sub_resource type="Resource" id="Resource_n08j8"]
+script = ExtResource("1_c05vc")
+metadata/_custom_type_script = "uid://cy126x2quk61t"
+
+[resource]
+script = ExtResource("1_a6wba")
+objective_condition = SubResource("Resource_n08j8")
+metadata/_custom_type_script = "uid://ctdbfmpawuh6i"

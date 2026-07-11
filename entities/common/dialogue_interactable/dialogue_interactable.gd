@@ -2,10 +2,7 @@ extends InteractableArea
 class_name DialogueInteractable
 ## An interactable area that shows dialogue when interacted with.
 
-const Balloon = preload("res://ui/assets/dialogue/balloon.tscn")
-
-@export var dialogue_resource: DialogueResource
-@export var dialogue_start: String = "start"
+@export var dialogue_resource: DialogueResource ## The dialogue that's actually being read to the player.
 
 func _ready() -> void:
 	super()
