@@ -1,7 +1,10 @@
 extends Node
 class_name InteractionController
 
-## Entering & Exiting
+@onready var player_state_component: PlayerStateComponent = %PlayerStateComponent
+
+	
+# Region Entering & Exiting
 var interactables_nearby : Dictionary[InteractableArea, Label3D] = {}
 
 func interactable_area_entered(area: InteractableArea) -> void:
@@ -26,8 +29,12 @@ const HINT_OFFSET := Vector3(0, 2, 0)
 func _process(_delta: float) -> void:
 	for area in interactables_nearby:
 		var hint = interactables_nearby[area]
+		if player_state_component.is_player_state(PlayerStateComponent.PlayerState.BUSY):
+			hint.hide()
+			return
+		
+		hint.show()
 		hint.global_position = ((area.global_position + PlayerManager.player.global_position) / 2) + HINT_OFFSET
-
 func create_hint_text() -> Label3D:
 	var new_label = Label3D.new()
 	new_label.name = "HINT_TEXT"

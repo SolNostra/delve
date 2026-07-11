@@ -14,12 +14,6 @@ func _ready() -> void:
 func _on_night_started() -> void:
 	load_objectives(1) # Later, check the save data to see what night we are on.
 
-func _on_objective_fulfilled(objective: Objective) -> void:
-	objective.objective_fulfilled = true
-	if check_objectives_complete():
-		objectives_complete = true
-		all_objectives_completed.emit()
-
 func load_objectives(shift: int) -> void:
 	var target_path = objectives_folder + str(shift)
 	var files = DirAccess.get_files_at(target_path)
@@ -37,6 +31,13 @@ func create_objective(objective: Objective) -> void:
 	objective.objective_condition.setup_objective()
 	objective_created.emit(objective)
 	objective.objective_condition.objective_fulfilled.connect(_on_objective_fulfilled.bind(objective))
+	current_objectives.append(objective)
+
+func _on_objective_fulfilled(objective: Objective) -> void:
+	objective.objective_fulfilled = true
+	if check_objectives_complete():
+		objectives_complete = true
+		all_objectives_completed.emit()
 
 func check_objectives_complete() -> bool:
 	for objective in current_objectives:

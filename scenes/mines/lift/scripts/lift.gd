@@ -11,23 +11,34 @@ extends Node3D
 
 var target_y: float
 
+signal lift_arrived
+
 func _ready() -> void:
-	PlayerManager.player.player_state_component.current_state = PlayerStateComponent.PlayerState.BUSY
-	
-	target_y = global_position.y
 	descend_lift()
+	NightManager.night_ended.connect(_on_night_ended)
+
+func _on_night_ended() -> void:
+	ascend_lift()
+	await lift_arrived
+	LoadingManager.load_scene("res://scenes/hub/hub_area.tscn")
+
+func descend_lift() -> void:
+	print("Descending!")
+	target_y = down_pos
+	_setup_lift_cutscene()
+	
+func ascend_lift() -> void:
+	print("Ascending!")
+	target_y = up_pos
+	_setup_lift_cutscene()
+	
+func _setup_lift_cutscene() -> void:
+	PlayerManager.player.player_state_component.set_player_state(PlayerStateComponent.PlayerState.BUSY)
 	phantom_camera_3d.priority = 10
 	await get_tree().create_timer(cutscene_duration).timeout
 	phantom_camera_3d.priority = 0
-	
-	PlayerManager.player.player_state_component.current_state = PlayerStateComponent.PlayerState.IDLE
-	
-
-func ascend_lift() -> void:
-	target_y = up_pos
-
-func descend_lift() -> void:
-	target_y = down_pos
+	PlayerManager.player.player_state_component.set_player_state(PlayerStateComponent.PlayerState.IDLE)
+	lift_arrived.emit()
 
 func _physics_process(delta: float) -> void:
 	if abs(global_position.y - target_y) < arrival_threshold:

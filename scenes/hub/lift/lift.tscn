@@ -219,7 +219,7 @@ transform = Transform3D(-7.5099095e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -7.5099095e-
 script = ExtResource("1_rmg76")
 
 [node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1694125630 node_paths=PackedStringArray("look_at_target")]
-transform = Transform3D(5.9604613e-08, -0.11207574, 0.9936991, 0, 0.99369967, 0.11207568, -0.9999994, 0, 5.9604613e-08, -1.717216e-06, 5.5683885, 11.372606)
+transform = Transform3D(5.960461e-08, -0.11207574, 0.993699, 0, 0.99369967, 0.11207567, -0.99999934, 0, 5.960461e-08, -1.717216e-06, 5.5683885, 11.372606)
 script = ExtResource("2_va1k2")
 look_at_mode = 2
 look_at_target = NodePath("../Body/Marker3D")

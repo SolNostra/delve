@@ -4,9 +4,12 @@ class_name ObjectivesPanel
 @onready var objectives_container: VBoxContainer = $MarginContainer/ObjectivesContainer
 @onready var objectives_complete: RichTextLabel = $ObjectivesComplete
 
-func _enter_tree() -> void:
+func _ready() -> void:
 	ObjectiveManager.objective_created.connect(_on_objective_created)
 	ObjectiveManager.all_objectives_completed.connect(_on_objectives_complete)
+	
+	for objective in ObjectiveManager.current_objectives:
+		_on_objective_created(objective)
 
 func _on_objective_created(objective: Objective) -> void:
 	var objective_label = Label.new()

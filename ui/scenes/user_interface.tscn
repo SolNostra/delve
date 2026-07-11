@@ -193,7 +193,6 @@ theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 120
 
 [node name="ObjectivesPanel" type="Panel" parent="HUD/MarginContainer" unique_id=2071032071]
-process_priority = -1
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
 size_flags_horizontal = 0
