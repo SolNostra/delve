@@ -8,5 +8,6 @@ func _ready() -> void:
 	super()
 	interacted.connect(_show_dialogue)
 
-func _show_dialogue() -> void:
-	DialogueManager.show_dialogue_balloon(dialogue_resource)
+func _show_dialogue(properties: InteractionController.InteractedProperties) -> void:
+	if properties == InteractionController.InteractedProperties.Neither:
+		DialogueManager.show_dialogue_balloon(dialogue_resource)

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://beae6us568nfl"]
 
 [ext_resource type="Script" uid="uid://cfnhwcy4cbhh0" path="res://ui/scripts/loading_rect.gd" id="1_0cmby"]
+[ext_resource type="PackedScene" uid="uid://bx77w3718jhv2" path="res://ui/scenes/fade_rect.tscn" id="2_52fcv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cmby"]
 bg_color = Color(0.20181593, 1.1431053e-07, 7.219613e-08, 1)
@@ -53,3 +54,8 @@ grow_vertical = 0
 bbcode_enabled = true
 text = "LOADING..."
 horizontal_alignment = 1
+
+[node name="FadeRect" parent="." unique_id=231394271 instance=ExtResource("2_52fcv")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cg70b3g3uxh1q" path="res://ui/scripts/common/show_on_night_start.gd" id="5_mdrh3"]
 [ext_resource type="Script" uid="uid://trs2g5rv2isy" path="res://ui/scripts/azure_progress.gd" id="5_me43p"]
 [ext_resource type="Script" uid="uid://c28xjppc20w3" path="res://ui/scripts/objectives_panel.gd" id="5_xia82"]
+[ext_resource type="PackedScene" uid="uid://bx77w3718jhv2" path="res://ui/scenes/fade_rect.tscn" id="8_mdrh3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2c62f"]
 bg_color = Color(0.06879826, 0.06879829, 0.06879823, 1)
@@ -19,6 +20,10 @@ bg_color = Color(0.03137255, 0, 0.5176471, 1)
 
 [node name="UserInterfaceLayer" type="CanvasLayer" unique_id=1872480771]
 script = ExtResource("1_ysm04")
+
+[node name="FadeRect" parent="." unique_id=231394271 instance=ExtResource("8_mdrh3")]
+unique_name_in_owner = true
+z_index = 1
 
 [node name="ShowOnNightStart" type="Node" parent="." unique_id=2116906433]
 script = ExtResource("5_mdrh3")

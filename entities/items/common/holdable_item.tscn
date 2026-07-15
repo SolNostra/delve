@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://62iej254odsc"]
+
+[ext_resource type="Script" uid="uid://bemx0si64ndhd" path="res://entities/items/toolbox/scripts/toolbox.gd" id="1_rbo67"]
+[ext_resource type="Script" uid="uid://eno5il8vtthn" path="res://entities/items/common/holdable_component/holdable_component.gd" id="2_pvojc"]
+[ext_resource type="Script" uid="uid://bovtjjderyyp5" path="res://entities/common/scripts/interactable_area/interactable_area.gd" id="3_bdqdb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(1, 0.4567871, 0.46536255)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4v7s"]
+radius = 1.488197
+
+[node name="HoldableItem" type="RigidBody3D" unique_id=221120896]
+collision_layer = 2
+collision_mask = 3
+mass = 0.5
+gravity_scale = 0.4
+continuous_cd = true
+script = ExtResource("1_rbo67")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=73761594]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.119506836, -0.0055389404)
+shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="HoldableComponent" type="Node3D" parent="." unique_id=1017407089]
+script = ExtResource("2_pvojc")
+metadata/_custom_type_script = "uid://eno5il8vtthn"
+
+[node name="InteractableArea" type="Area3D" parent="HoldableComponent" unique_id=1670853315]
+script = ExtResource("3_bdqdb")
+metadata/_custom_type_script = "uid://bovtjjderyyp5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HoldableComponent/InteractableArea" unique_id=373971963]
+shape = SubResource("SphereShape3D_g4v7s")

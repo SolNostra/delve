@@ -151,7 +151,7 @@ func apply_dialogue_line() -> void:
 
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():
-		dialogue_label.type_out()
+		dialogue_label.type_out(dialogue_voice)
 		await dialogue_label.finished_typing
 
 	# Wait for next line

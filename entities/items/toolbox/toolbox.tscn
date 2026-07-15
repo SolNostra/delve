@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://ddhvua1nwk3er"]
+
+[ext_resource type="Script" uid="uid://bovtjjderyyp5" path="res://entities/common/scripts/interactable_area/interactable_area.gd" id="1_fhswa"]
+[ext_resource type="Script" uid="uid://bemx0si64ndhd" path="res://entities/items/toolbox/scripts/toolbox.gd" id="1_jtj37"]
+[ext_resource type="Script" uid="uid://eno5il8vtthn" path="res://entities/items/common/holdable_component/holdable_component.gd" id="2_fsdro"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(1, 0.4567871, 0.46536255)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtj37"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4v7s"]
+radius = 1.488197
+
+[node name="Toolbox" type="RigidBody3D" unique_id=221120896]
+collision_layer = 2
+collision_mask = 3
+mass = 0.5
+gravity_scale = 0.4
+continuous_cd = true
+script = ExtResource("1_jtj37")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=73761594]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.119506836, -0.0055389404)
+shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=891725204]
+transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, 0, -0.12451172, 0)
+material_overlay = SubResource("StandardMaterial3D_jtj37")
+size = Vector3(1.5283203, 0.75097656, 0.7150879)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="." unique_id=106901369]
+transform = Transform3D(0.66, 0, 0, 0, -2.8849517e-08, -0.66, 0, 0.66, -2.8849517e-08, 0, 0.030136347, 0)
+inner_radius = 0.45612288
+outer_radius = 0.341
+
+[node name="HoldableComponent" type="Node3D" parent="." unique_id=630697779]
+unique_name_in_owner = true
+script = ExtResource("2_fsdro")
+holding_offset = Vector3(0, -0.45, 0)
+holding_rotation_offset = Vector3(0, 1.585, 0)
+
+[node name="InteractableArea" type="Area3D" parent="HoldableComponent" unique_id=1670853315]
+script = ExtResource("1_fhswa")
+can_hold = true
+metadata/_custom_type_script = "uid://bovtjjderyyp5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HoldableComponent/InteractableArea" unique_id=373971963]
+shape = SubResource("SphereShape3D_g4v7s")

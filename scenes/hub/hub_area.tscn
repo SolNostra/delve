@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://db3chpdchhhig" path="res://scenes/hub/lift/lift.tscn" id="2_ydya3"]
 [ext_resource type="PackedScene" uid="uid://c0hbapxqnhbh7" path="res://scenes/hub/hub_model.tscn" id="3_vaw7m"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://entities/player/player.tscn" id="3_ydya3"]
+[ext_resource type="PackedScene" uid="uid://ddhvua1nwk3er" path="res://entities/items/toolbox/toolbox.tscn" id="5_hqblb"]
 
 [node name="HubArea" type="Node3D" unique_id=1953127663]
 
@@ -33,3 +34,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.986298, 11.04121, 0)
 light_energy = 3.0
 shadow_enabled = true
 omni_range = 10.492
+
+[node name="Toolbox" parent="." unique_id=221120896 instance=ExtResource("5_hqblb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7409697, 0.37233686, -2.6173248)

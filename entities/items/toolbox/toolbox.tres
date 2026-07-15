@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BaseItem" format=3 uid="uid://dq8sst78c0qpu"]
+
+[ext_resource type="Script" uid="uid://cpedl3nyb3rq8" path="res://entities/items/common/baseitem.gd" id="1_4kupr"]
+
+[resource]
+script = ExtResource("1_4kupr")
+item_id = "toolbox"
+item_name = "Toolbox"
+item_description = "It's a toolbox."
+metadata/_custom_type_script = "uid://cpedl3nyb3rq8"

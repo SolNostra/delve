@@ -219,7 +219,7 @@ transform = Transform3D(-7.5099095e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -7.5099095e-
 script = ExtResource("1_rmg76")
 
 [node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1694125630 node_paths=PackedStringArray("look_at_target")]
-transform = Transform3D(5.960461e-08, -0.11207574, 0.993699, 0, 0.99369967, 0.11207567, -0.99999934, 0, 5.960461e-08, -1.717216e-06, 5.5683885, 11.372606)
+transform = Transform3D(5.9604602e-08, -0.11207574, 0.9936989, 0, 0.99369967, 0.11207566, -0.9999992, 0, 5.9604602e-08, -1.717216e-06, 5.5683885, 11.372606)
 script = ExtResource("2_va1k2")
 look_at_mode = 2
 look_at_target = NodePath("../Body/Marker3D")
@@ -232,13 +232,13 @@ metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 libraries/ = SubResource("AnimationLibrary_wrrtb")
 
 [node name="DialogueInteractable" type="Area3D" parent="." unique_id=2132282714]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.628332e-07, 0, 5.714286)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3602294e-07, 0, -0.12822355)
 script = ExtResource("4_i7vy5")
 dialogue_resource = ExtResource("5_rmg76")
 metadata/_custom_type_script = "uid://bbkotdpnbq1th"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DialogueInteractable" unique_id=406228362]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.828505e-07, 3.3358002, -5.846854)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2842371, 0)
 shape = SubResource("BoxShape3D_g4v7s")
 
 [node name="Body" type="Node3D" parent="." unique_id=1475442367]

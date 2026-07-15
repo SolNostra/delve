@@ -9,9 +9,14 @@ class_name Player
 @onready var death_component: DeathComponent = %DeathComponent
 @onready var player_state_component: PlayerStateComponent = %PlayerStateComponent
 @onready var interaction_controller: InteractionController = %InteractionController
-@onready var collider: CollisionShape3D = $Collider
-@onready var model: Node3D = $Model
+@onready var hands_component: HandsComponent = %HandsComponent
+
 @onready var user_interface_layer: UserInterface = %UserInterfaceLayer
+
+@onready var collider: CollisionShape3D = $Collider
+@onready var armature: PlayerArmature = %Armature
+@onready var model: Node3D = $Model
+
 
 func _ready() -> void:
 	PlayerManager.player = self

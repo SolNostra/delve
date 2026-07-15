@@ -59,9 +59,9 @@ custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_662h8")
-theme_override_font_sizes/normal_font_size = 124
+theme_override_font_sizes/normal_font_size = 84
 bbcode_enabled = true
-text = "[shake]delve"
+text = "[shake][color=#007FFF]azure[/color] dreams"
 horizontal_alignment = 1
 vertical_alignment = 1
 

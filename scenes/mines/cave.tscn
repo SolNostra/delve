@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://bkhnjdvk4i7cx" path="res://entities/common/assets/gradient_pallette_material.tres" id="1_y3nf0"]
 [ext_resource type="PackedScene" uid="uid://di5hu7x2ktysg" path="res://scenes/mines/lift/lift.tscn" id="4_bwt23"]
 [ext_resource type="PackedScene" uid="uid://d2o226fwobxml" path="res://scenes/mines/cave_mesh.tscn" id="5_3cxkm"]
-[ext_resource type="PackedScene" uid="uid://cyvdtqvi6urk5" path="res://scenes/mines/drill/azure_drill.tscn" id="6_545h0"]
+[ext_resource type="PackedScene" uid="uid://cyvdtqvi6urk5" path="res://entities/drill/azure_drill.tscn" id="6_545h0"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uqaih"]
 
