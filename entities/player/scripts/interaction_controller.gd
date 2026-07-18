@@ -11,11 +11,14 @@ enum InteractedProperties {
 }
 	
 # Region Entering & Exiting
+var selected_interactable_index : int
 var interactables_nearby : Dictionary[InteractableArea, Label3D] = {}
 
 func interactable_area_entered(area: InteractableArea) -> void:
 	var new_hint = assign_hint_text(area)
 	interactables_nearby[area] = new_hint
+	if interactables_nearby.size() == 1:
+		_emphasis_changed(-1, 0)
 
 func interactable_area_exited(area: InteractableArea) -> void:
 	interactables_nearby.erase(area)
@@ -29,17 +32,28 @@ func _input(event: InputEvent) -> void:
 	if interactables_nearby.is_empty():
 		return
 	
+	_handle_interaction(event)
+	_handle_scrolling(event)
+
+func _handle_scrolling(event: InputEvent) -> void:
+	if event.is_action_pressed("cycle_interactable"):
+		var previous = selected_interactable_index
+		var next = selected_interactable_index + 1
+		if next > interactables_nearby.size() - 1:
+			next = 0
+		selected_interactable_index = max(0, next)
+		_emphasis_changed(previous, selected_interactable_index)
+
+func _handle_interaction(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
-		var interactable = interactables_nearby.keys().front()
+		var interactable = interactables_nearby.keys()[selected_interactable_index]
 		interactable.interact(InteractedProperties.Neither)
 	elif event.is_action_pressed("left_hand"):
-		var interactable = interactables_nearby.keys().front()
+		var interactable = interactables_nearby.keys()[selected_interactable_index]
 		interactable.interact(InteractedProperties.LeftHand)
 	elif event.is_action_pressed("right_hand"):
-		var interactable = interactables_nearby.keys().front()
+		var interactable = interactables_nearby.keys()[selected_interactable_index]
 		interactable.interact(InteractedProperties.RightHand)
-	
-	
 
 ## Hint Text - This could be it's own file honestly.
 const HINT_NODE_NAME := "HINT_TEXT"
@@ -54,6 +68,7 @@ func _process(_delta: float) -> void:
 		
 		hint.show()
 		hint.global_position = ((area.global_position + PlayerManager.player.global_position) / 2) + HINT_OFFSET
+		
 func create_hint_text(interactable: InteractableArea) -> Label3D:
 	var new_label = Label3D.new()
 	new_label.name = "HINT_TEXT"
@@ -69,9 +84,25 @@ func assign_hint_text(interactable: InteractableArea) -> Label3D:
 	new_hint.global_position = ((interactable.global_position + PlayerManager.player.global_position) / 2) + HINT_OFFSET
 	return new_hint
 	
-func deassign_hint_text(node: Node3D) -> void:
-	var hint = node.get_node("HINT_TEXT")
+func deassign_hint_text(interactable: InteractableArea) -> void:
+	var hint = interactable.get_node("HINT_TEXT") as Label3D
 	hint.queue_free()
+
+func _emphasis_changed(previous_index: int, current_index: int) -> void:
+	if previous_index != -1:
+		var previous = interactables_nearby.keys()[previous_index]
+		deemphasize_hint_text(previous)
+		
+	var current = interactables_nearby.keys()[current_index]
+	emphasize_hint_text(current)
+
+func emphasize_hint_text(interactable: InteractableArea) -> void:
+	var hint = interactable.get_node("HINT_TEXT") as Label3D
+	hint.outline_modulate = Color.CORNFLOWER_BLUE
+
+func deemphasize_hint_text(interactable: InteractableArea) -> void:
+	var hint = interactable.get_node("HINT_TEXT") as Label3D
+	hint.outline_modulate = Color.BLACK
 
 func get_interaction_key(interactable : InteractableArea) -> String:
 	var key_label = ""
