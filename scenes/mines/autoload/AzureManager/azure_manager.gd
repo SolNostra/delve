@@ -5,6 +5,8 @@ signal azure_filled()
 
 var current_azure := 0
 var max_azure := 100
+
+var current_drill : AzureDrill
 	
 func set_progress(value: int) -> void:
 	current_azure = clampi(value, 0, max_azure)

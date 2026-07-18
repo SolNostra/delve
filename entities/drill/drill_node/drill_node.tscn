@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://duc1xglkrtvbi"]
+
+[ext_resource type="Script" uid="uid://c2gqr6bp13er6" path="res://entities/drill/drill_node/scripts/drill_node.gd" id="1_2cycw"]
+
+[node name="DrillNode" type="Area3D" unique_id=426874626]
+script = ExtResource("1_2cycw")

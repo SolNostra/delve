@@ -1,8 +1,10 @@
 extends Node3D
+class_name AzureDrill
 
 ## Mechanics
 @export var progress_per_tick := 1
 @export var tick_duration := 1.0
+signal drill_ticked()
 
 ## FX
 @onready var drilling_sfx: audio_player = $DrillingSFX
@@ -16,7 +18,14 @@ var finished_drilling := false
 var drilling := false
 
 func _ready() -> void:
+	AzureManager.current_drill = self
 	AzureManager.azure_filled.connect(_on_azure_filled)
+	_connect_to_drill_nodes()
+
+func _connect_to_drill_nodes() -> void:
+	var drill_nodes = get_tree().current_scene.find_children("*", "DrillNode", true)
+	for drill_node: DrillNode in drill_nodes:
+		drill_node.connect_to_drill(self)
 
 func _on_interactable_area_interacted(properties: InteractionController.InteractedProperties) -> void:
 	if properties != InteractionController.InteractedProperties.Neither:
@@ -49,6 +58,7 @@ func stop_drilling() -> void:
 
 func _on_progress_timer_timeout() -> void:
 	AzureManager.add_progress(progress_per_tick)
+	drill_ticked.emit()
 
 func _on_azure_filled() -> void:
 	stop_drilling()
